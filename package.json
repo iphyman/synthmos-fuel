@@ -1,0 +1,23 @@
+{
+  "name": "synthmos-fuel",
+  "version": "1.0.0",
+  "description": "A high-risk high-reward prediction betting market protocol on Fuel blockchain",
+  "engines": {
+    "node": ">=18.17.0",
+    "pnpm": ">=8.6.10"
+  },
+  "homepage": "https://github.com/Iphyman/synthmos-fuel",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Iphyman/synthmos-fuel.git"
+  },
+  "workspaces": [
+    "./packages/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Iphyman <opensoftweb@gmail.com>",
+  "license": "Apache-2.0"
+}

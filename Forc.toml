@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "./packages/contracts/market",
+    "./packages/contracts/market_controller",
+    "./packages/contracts/synth_token",
+]

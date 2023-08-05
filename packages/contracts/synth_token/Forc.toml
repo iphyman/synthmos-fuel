@@ -1,0 +1,8 @@
+[project]
+authors = ["Iphyman <opensoftweb@gmail.com>"]
+entry = "main.sw"
+license = "Apache-2.0"
+name = "synth_token"
+
+[dependencies]
+contract_libraries = { path = "../../contract_libraries" }
