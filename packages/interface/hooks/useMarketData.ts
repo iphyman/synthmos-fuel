@@ -1,5 +1,4 @@
-import { MARKET, MarketIds } from '@app/configs';
-import { GenericResponse, RoundResponse } from '@app/types';
+// import { MARKET, MarketIds } from '@app/configs';
 import { useEffect } from 'react';
 import { useMarketStore } from './useMarketStore';
 import { useBoolean } from '@chakra-ui/react';
