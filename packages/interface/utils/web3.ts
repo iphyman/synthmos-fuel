@@ -1,4 +1,12 @@
 import { Price } from '@pythnetwork/pyth-evm-js';
+import {
+  BN,
+  CallResult,
+  FunctionInvocationScope,
+  MultiCallInvocationScope,
+  ReceiptType,
+  bn,
+} from 'fuels';
 
 export function shortenAddress(address: string, chars = 4) {
   return `${address.substring(0, chars + 2)}...${address.substring(
@@ -50,4 +58,44 @@ export function getTimestamp(minutes: number) {
   const toMilli = minutes * 60 * 1000;
 
   return now + toMilli;
+}
+
+export const ZERO = bn(0);
+
+export type TransactionCost = {
+  total: BN;
+  fee: BN;
+  error?: string;
+};
+
+export function getGasUsed(simulateResult: CallResult) {
+  const scriptResult = simulateResult.receipts.find(
+    (receipt) => receipt.type === ReceiptType.ScriptResult
+  );
+
+  if (scriptResult?.type === ReceiptType.ScriptResult) {
+    return scriptResult.gasUsed;
+  }
+
+  return ZERO;
+}
+
+export async function getTransactionCost(
+  functionInvocation: FunctionInvocationScope | MultiCallInvocationScope
+): Promise<TransactionCost> {
+  try {
+    const txCost = await functionInvocation
+      .txParams({
+        gasPrice: ZERO,
+      })
+      .getTransactionCost({
+        fundTransaction: true,
+      });
+    return {
+      total: txCost.gasUsed.mul(1.3),
+      fee: txCost.fee,
+    };
+  } catch (err: any) {
+    return { fee: ZERO, total: ZERO, error: err?.message };
+  }
 }

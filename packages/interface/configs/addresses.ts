@@ -35,7 +35,10 @@ export const MARKET: MarketMap = {
   },
 };
 
-export const MARKET_CONTROLLER: string = '';
+export const MARKET_CONTROLLER = '';
 
-export const SYNTH_TOKEN: string =
+export const SYNTH_TOKEN =
   '0x08d3c36ea8d4899da3d5c871240dab0cf95f90b1886ce94f625d64a655c86b3a';
+
+export const ETH_ID =
+  '0x0000000000000000000000000000000000000000000000000000000000000000';
